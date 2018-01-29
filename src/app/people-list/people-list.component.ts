@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../person';
+import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-people-list',
   template: `
   <ul>
     <li *ngFor="let person of people">
-      {{person.name}}
+      <a href="#" (click)=selectPerson(person)>
+        {{person.name}}
+      </a>
     </li>
   </ul>
+  <app-person-details [person]="selectedPerson"> </app-person-details>
   `,
   styleUrls: ['./people-list.component.scss']
 })
 export class PeopleListComponent implements OnInit {
-  people: Person[] = [
-    {name: "Luke Skywalker", height: 177, weight: 70},
-    {name: 'Darth Vader', height: 200, weight: 100},
-    {name: 'Han solo', height: 185, weight: 85},
-    {name: 'Leila', height: 165, weight: 90}
+  people: Person[] = [] ;
 
-  ]
-  constructor() { }
+  selectedPerson:Person;
+  constructor(private _peopleService: PeopleService) { 
+    
+  }
 
   ngOnInit() {
+    this.people = this._peopleService.getAll();
+  }
+
+  selectPerson(person):void{
+    this.selectedPerson = person;
   }
 
 }
