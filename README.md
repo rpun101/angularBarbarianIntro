@@ -1,27 +1,56 @@
-# AngularGetStarted
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+### Notes from the [article](https://www.barbarianmeetscoding.com/blog/categories/angular2-step-by-step/) series ###
++ Webpack: 
+    - modular bundler that takes all these files and modules, processes them 
+	- makes them available in away that can be run in any browser.
 
-## Development server
++ Module:
+	- typescript/es6 features
+	- encapsulate, group, reuse, distribute and load code in JavaScript
+	- export functionality to export functions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
++ Component:
+	- core building block of angular applications
+	- reusable
+	- self contained and has template(html), html element(selector) and variable(export class)
 
-## Code scaffolding
++ Decorator: like a attribute in C# or Java
+	- like a function that is applied to whatever it decorates.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
++ structural directive:
+    - directive that is going to effect the DOM in some way adding or removing elements to it.
+	- example: *ngFor
+	-asterisk before directive denotes structural directive
 
-## Build
++ Angular service:
+	- a class that encapsulates some sort of functionality and provides it as service for the rest of your application.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
++ `OnInit()`:
+	- lifecycle hook
+	- instead of creating files when component is constructor, we can delay getting data until it is initiated.
 
-## Running unit tests
++ _how do you inject stuff in a service?_
+	- same way as injecting components, by injecting the dependency in the constructor and registering in the providers property of the root component.
+	- also we need to decorate the service with the Injectable decorator.
+Why don’t we use the Injectable decorator in components?
+	- because the Component decorator enables dependency injection directly.
+interpolation binding
+	- provides one way data binding from component to the template to display data.
+	- example: `class { title: 'app works' }`, in .html `{{title}}`
+event binding
+	- one way data binding between the template and underlying component
+	- `(click)="selectPerson(person)"`
+property binding
+	- `<app-child-component [childVariable]="parentVariable"> </app-child-component>`
++ `@Input()` decorator
+	- makes a variable/property as an input to the Component, and will allow other components to sent variable into the component.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
++ Routing in angular
+	- route the user to different component based on the url that was typed in the browser, or that you direct them to through a link.
+	- configure by:
+		- `Routes` array with collection of routes
+		- `RouterModule` export that provides the router configuration to the rest of the application.
+	- `<router-outlet>`: lets you define where to load routed views!
+	- `ActivatedRoute`: helps to get access to route parameter from URL.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
