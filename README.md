@@ -93,3 +93,8 @@ property binding
 	+ assign `ngForm` to local template variable
 	+ to disable submit button if form is not valid
 		- attribute `[disabled]="!personForm.form.valid"`
+
++ **ngModel**
+	- `ngModel` lets you track the state and validity of your inputs
+	- `ngModel` adds CSS classes to your inputs based on their state, whether they have been touched, changed or whether they are valid or not.
+	+ Using `#name="ngModel"` in an input element creates a local template variable called #name and assigns the `ngModel` directive to it. You can then use the variable to access the `ngModel` directive properties like `valid`, `pristine`, `touched`, `dirty`, etc.

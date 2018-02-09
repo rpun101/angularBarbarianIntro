@@ -10,6 +10,7 @@ import { PeopleService } from '../people.service';
   styles: []
 })
 export class PersonDetailsComponent implements OnInit {
+  professions: string[] = ['jedi', 'bounty hunter', 'princess', 'sith lord'];
   person: Person;
   sub: any;
   constructor(private peopleService: PeopleService,
@@ -33,7 +34,8 @@ export class PersonDetailsComponent implements OnInit {
     this.router.navigate(link);
    }
   savePersonDetails(){
-    alert(`saved!!! ${JSON.stringify(this.person)}`);
+    //alert(`saved!!! ${JSON.stringify(this.person)}`);
+    this.peopleService.save(this.person);
   }
 
 }
