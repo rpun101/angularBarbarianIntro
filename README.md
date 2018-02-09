@@ -88,3 +88,8 @@ property binding
 	+ import `AbstractControl`, `Validator`, `ValidationErrors` from `angular/forms`
 	+ implement `Validator`, so we get validate method. e.g `validate(control: AbstractControl): ValidationErrors`
 	+ register validation to Module DI by `NG_VALIDATORS` in @directive decoration under `providers`
+
++ **Submit Form**
+	+ assign `ngForm` to local template variable
+	+ to disable submit button if form is not valid
+		- attribute `[disabled]="!personForm.form.valid"`
