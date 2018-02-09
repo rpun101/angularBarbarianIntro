@@ -53,4 +53,27 @@ property binding
 	- `<router-outlet>`: lets you define where to load routed views!
 	- `ActivatedRoute`: helps to get access to route parameter from URL.
 
++ `#name` **template local variable** 
+	- to keep DOM element elated references and logic out of component code.
+	- references the DOM element itself
+	- `<input type="text" name="name" [(ngModel)]="person.name" #name>`
 
++ **Angular 2+ data-bindings**
+	- Interpolation: 
+		+ component => template. 
+		+ to display information from the component into the template. 
+		+ `{{person.name}}`
+	- Property bindings: 
+		+ to bind data from component => template.  
+		+ to bind component data to DOM element properties.
+		+ `<img [src]="person.imageUrl">`
+	- Event bindings: 
+		+ template => component.  
+		+ to bind template events to the component. 
+		+ to execute arbitrary code as a response to an interaction between the user and the user interface of your application.
+		+ `[click)="selectPerson(person)"`
+	- **`[(ngModel)]`** 
+		+ Two-way data binding
+		+ syncs data both ways from the component to the template and back. 
+		+ typically use it within form inputs. 
+		+ `[(ngModel)]="person.name"`

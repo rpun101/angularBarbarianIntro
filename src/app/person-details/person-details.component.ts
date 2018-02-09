@@ -6,15 +6,7 @@ import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-person-details',
-  template: `
-  <section *ngIf="person">
-    <h2 style="color:blue"> {{person.name}} </h2>
-    <div>
-    {{person.name}} weighs {{person.weight}} pounds, and is {{person.height}} inch tall. </div>
-  </section>
-
-  <button (click)="gotoPeopleList()"> Back to People List </button>
-  `,
+  templateUrl: './person-details.component.html',
   styles: []
 })
 export class PersonDetailsComponent implements OnInit {
