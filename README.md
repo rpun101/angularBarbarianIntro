@@ -77,3 +77,14 @@ property binding
 		+ syncs data both ways from the component to the template and back. 
 		+ typically use it within form inputs. 
 		+ `[(ngModel)]="person.name"`
+
++ **Validation in Angular**
+	+ supports HTML5 validation constraints.
+	+ `ngModel` directive keep tracks of class and values of DOM
+	+ assign ngModel to **local template variable**, `#localTemplateVariableName`, to pass all ngModel values to it.  
+	**Creating custom directive for validation**
+	+ `ng generate directive max-validator`
+	+ change the name for the selector
+	+ import `AbstractControl`, `Validator`, `ValidationErrors` from `angular/forms`
+	+ implement `Validator`, so we get validate method. e.g `validate(control: AbstractControl): ValidationErrors`
+	+ register validation to Module DI by `NG_VALIDATORS` in @directive decoration under `providers`
