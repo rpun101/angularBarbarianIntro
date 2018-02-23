@@ -98,3 +98,21 @@ property binding
 	- `ngModel` lets you track the state and validity of your inputs
 	- `ngModel` adds CSS classes to your inputs based on their state, whether they have been touched, changed or whether they are valid or not.
 	+ Using `#name="ngModel"` in an input element creates a local template variable called #name and assigns the `ngModel` directive to it. You can then use the variable to access the `ngModel` directive properties like `valid`, `pristine`, `touched`, `dirty`, etc.
+
++ Enabling the **HTTP** Module in app
+	- 
+	```js
+		import { Http, Response } from '@angular/http';
+		/*
+		Http: to make get, post ,put requests
+		Response: is response from http service
+		*/
+		import { Observable } from 'rxjs/Observable';
+		/*
+		to use async pattern, replacement of promise
+		*/
+		import 'rxjs/add/operator/map';
+		/*
+		importing map operator which helps to transfomrs items into something our app understands!
+		*/
+	```  

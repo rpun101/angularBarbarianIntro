@@ -18,12 +18,14 @@ import { PeopleService } from '../people.service';
 export class PeopleListComponent implements OnInit {
   people: Person[] = [] ;
 
-  constructor(private _peopleService: PeopleService) { 
+  constructor(private peopleService: PeopleService) { 
     
   }
 
   ngOnInit() {
-    this.people = this._peopleService.getAll();
+    this.peopleService
+      .getAll()
+      .subscribe(p => this.people = p);
   }
 
 }

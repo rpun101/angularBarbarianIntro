@@ -22,7 +22,8 @@ export class PersonDetailsComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = Number.parseInt(params['id']);
-      this.person = this.peopleService.get(id);
+      this.peopleService.get(id)
+        .subscribe(p => this.person = p);
     })
   }
 
@@ -35,7 +36,9 @@ export class PersonDetailsComponent implements OnInit {
    }
   savePersonDetails(){
     //alert(`saved!!! ${JSON.stringify(this.person)}`);
-    this.peopleService.save(this.person);
+    this.peopleService
+      .save(this.person)
+      .subscribe(r => console.log(`saved!!! ${JSON.stringify(this.person)}`));
   }
 
 }
