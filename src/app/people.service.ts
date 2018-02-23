@@ -4,6 +4,8 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 const PEOPLE: Person[] = [
   {id:1, name: "Luke Skywalker", height: 177, weight: 70, profession : ''},
@@ -21,7 +23,8 @@ export class PeopleService {
   getAll(): Observable<Person[]> {
     let people$ = this.http
         .get(`${this.baseUrl}/people` , {headers: this.getHeaders()})
-        .map(mapPersons);
+        .map(mapPersons)
+        .catch(handleError);
 
     return people$;
 
@@ -37,7 +40,8 @@ export class PeopleService {
   get(id:number): Observable<Person>{
     let person$ = this.http
                       .get(`${this.baseUrl}/people/${id}`,  {headers: this.getHeaders()})
-                      .map(mapPerson);
+                      .map(mapPerson)
+                      .catch(handleError);
     return person$;
   }
   
@@ -61,7 +65,8 @@ function mapPerson(response:Response): Person{
 
 function mapPersons(response:Response): Person[] {
 
-
+  //uncomment following line to see the error message
+  //throw new Error("ups! Error Message Forced!");
   return response.json().results.map(toPerson);    
 }
 
@@ -82,3 +87,12 @@ function extractId(personData:any) {
   return parseInt(extractedId);
 }
 
+function handleError(error: any){
+  //log error
+  //could be something sophisticated
+  let errorMsg = error.message || `Yikes! There was problem and we couldn't retrieve your data`
+  console.log(errorMsg);
+
+  //throw an application level error
+  return Observable.throw(errorMsg);
+}

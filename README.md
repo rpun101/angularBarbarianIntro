@@ -116,3 +116,13 @@ property binding
 		importing map operator which helps to transfomrs items into something our app understands!
 		*/
 	```  
++ ERROR Handling with `Observables`
+	- service level error deals with http requests errors and later converted into application error
+	- ```js 
+		import 'rxjs/add/operator/catch';
+		import 'rxjs/add/operator/throw';
+	  ```  
+	  + `catch`: to handle errors in the stream, allows us to intercept errors within the stream
+	  + `throw`: let's us push a new error upwards to our application
+
+	- `.subscribe(<happyFunction>, [<errorHandleFunction>], [<onCompleteFunction>])`
